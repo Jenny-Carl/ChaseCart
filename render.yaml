@@ -1,0 +1,38 @@
+# Backend service avec Docker
+services:
+  - type: web
+    name: chasecart-backend
+    env: docker
+    dockerfilePath: ./Web application/docker/backend/Dockerfile
+    dockerContext: ./Web application
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FIREBASE_PROJECT_ID
+        value: chasecart-2329d
+      - key: FIREBASE_SERVICE_ACCOUNT
+        sync: false
+
+# Frontend service avec Docker
+  - type: web
+    name: chasecart-frontend
+    env: docker
+    dockerfilePath: ./Web application/docker/frontend/Dockerfile
+    dockerContext: ./Web application
+    plan: free
+    envVars:
+      - key: VITE_FIREBASE_API_KEY
+        value: AIzaSyD0zh_y0_4QJWQXWqPvOdGjHE3Ua31ixnA
+      - key: VITE_FIREBASE_AUTH_DOMAIN
+        value: chasecart-2329d.firebaseapp.com
+      - key: VITE_FIREBASE_PROJECT_ID
+        value: chasecart-2329d
+      - key: VITE_FIREBASE_STORAGE_BUCKET
+        value: chasecart-2329d.firebasestorage.app
+      - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+        value: "895944263153"
+      - key: VITE_FIREBASE_APP_ID
+        value: "1:895944263153:web:03f83c344334b7b97db050"
+      - key: VITE_FIREBASE_MEASUREMENT_ID
+        value: G-1M6WPJMBKP

@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+Web application/frontend/node_modules/
+Web application/backend/node_modules/
+
+# Build outputs
+dist/
+build/
+Web application/frontend/dist/
+Web application/frontend/build/
+Web application/backend/dist/
+Web application/backend/build/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.development
+Web application/backend/.env
+Web application/frontend/.env
+Web application/docker/.env
+Web application/docker/.env.local
+Web application/docker/.env.production
+
+# Firebase service account keys
+Web application/backend/src/serviceAccountKey.json
+Cart code/service-account.json
+
+# Docker volumes and data
+Web application/docker/volumes/
+Web application/docker/data/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Production builds
+*.tgz
+*.zip

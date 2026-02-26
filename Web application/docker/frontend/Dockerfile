@@ -1,0 +1,46 @@
+# Multi-stage build pour Frontend avec Assets optimisés
+FROM node:20-slim AS builder
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Installer les dépendances système nécessaires
+RUN apt-get update && apt-get install -y \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copier les fichiers de configuration
+COPY frontend/package*.json ./
+
+# Supprimer le package-lock.json pour éviter les conflits
+RUN rm -f package-lock.json
+
+# Nettoyer le cache npm et installer
+RUN npm cache clean --force
+RUN npm install --legacy-peer-deps
+
+# Copier tout le code source (y compris les assets)
+COPY frontend .
+
+# Build de l'application
+RUN npm run build
+
+# Stage de production avec Nginx
+FROM nginx:alpine
+
+# Copier les fichiers buildés vers Nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Copier les assets directement (au cas où certains ne seraient pas dans le build)
+COPY --from=builder /app/src/assets /usr/share/nginx/html/assets
+
+# Copier la configuration Nginx
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+
+# Exposer le port
+EXPOSE 80
+
+# Démarrer Nginx
+CMD ["nginx", "-g", "daemon off;"]
