@@ -2,6 +2,9 @@
 
 **Raspberry Pi 4B • ROS • LiDAR • Firestore • React Web App • ESP32 Motor Control**
 
+<img width="1600" height="1310" alt="WhatsApp Image 2026-05-25 at 12 43 19 AM" src="https://github.com/user-attachments/assets/0dcbdd1e-147c-4346-9667-c0a5461ab74a" />
+
+
 ChaseCart is an **autonomous indoor navigation robot** designed to follow a user’s shopping list, fetch items one-by-one, and navigate a store environment using LiDAR, wheel encoders, RFID sensor, and a real-time map. 
 
 The system integrates **Raspberry Pi (ROS1)**, **ESP32**, **React frontend**, and **Firebase Firestore** for real-time coordination.
